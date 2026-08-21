@@ -1,0 +1,62 @@
+name: Dear Saigon Watchdog
+# Runs daily on GitHub's servers (free, public repo) — no need for your computer to be on.
+# Checks: website up? · custom domain live yet? · still using the interim Google order link?
+# Opens/updates a GitHub Issue when something needs your attention.
+
+on:
+  schedule:
+    - cron: '17 13 * * *'   # ~9:17am Eastern daily (UTC)
+  workflow_dispatch: {}       # lets you run it manually from the Actions tab
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run checks
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          SITE="https://skywalker8888.github.io/dear-saigon-landing/"
+          DOMAIN="dearsaigonburlington.com"
+          alerts=""
+          note() { echo "- $1" >> "$GITHUB_STEP_SUMMARY"; }
+          echo "## Dear Saigon watchdog — $(date -u)" >> "$GITHUB_STEP_SUMMARY"
+
+          # 1) Website up?
+          code=$(curl -s -o /tmp/p.html -w "%{http_code}" -L "$SITE" || echo 000)
+          if [ "$code" = "200" ] && grep -q "DEAR SAIGON" /tmp/p.html; then
+            note "✅ Website up (HTTP $code)"
+          else
+            note "🔴 Website DOWN or broken (HTTP $code)"; alerts="${alerts}- 🔴 Website is down or not rendering (HTTP $code).\n"
+          fi
+
+          # 2) Custom domain live yet?
+          if python3 -c "import socket,sys; socket.gethostbyname('$DOMAIN')" 2>/dev/null; then
+            note "✅ Domain $DOMAIN resolves — time to set it as the GitHub Pages custom domain."
+            alerts="${alerts}- ✅ $DOMAIN now resolves — add it under repo Settings → Pages → Custom domain.\n"
+          else
+            note "⏳ $DOMAIN not resolving yet (DNS A-records not added)."
+          fi
+
+          # 3) Still using the interim Google order link? (reminder to swap in Clover)
+          if grep -q "maps.google.com/?cid=" /tmp/p.html; then
+            note "⏳ Order buttons still point to the Google listing (30% apps). Swap in the direct Clover link when available."
+          else
+            note "✅ Order buttons no longer use the Google interim link."
+          fi
+
+          # Raise an issue only when there's something actionable
+          if [ -n "$alerts" ]; then
+            title="Dear Saigon watchdog: action needed"
+            body=$(printf "Automated check on %s\n\n%b\nSite: %s" "$(date -u)" "$alerts" "$SITE")
+            existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title $title" --json number --jq '.[0].number' 2>/dev/null || echo "")
+            if [ -n "$existing" ]; then
+              gh issue comment "$existing" --repo "$GITHUB_REPOSITORY" --body "$body" || true
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body" || true
+            fi
+          fi
