@@ -7,6 +7,7 @@ import json
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML = (ROOT / "index.html").read_text(encoding="utf-8")
+WATCHDOG = (ROOT / ".github" / "workflows" / "watchdog.yml").read_text(encoding="utf-8")
 
 
 class LinkParser(HTMLParser):
@@ -74,7 +75,7 @@ class SafeFoundationTests(unittest.TestCase):
                     f"unapproved external destination remains: {label!r} -> {href!r}",
                 )
 
-    def test_owner_confirmed_public_facts_are_present(self):
+    def test_recorded_public_facts_are_present(self):
         self.assertIn("2405 Fairview St, Burlington, ON L7R 2E4", HTML)
         self.assertNotIn("2405 Fairview St, Unit 3", HTML)
         self.assertIn("Closed Mon", HTML)
@@ -89,10 +90,15 @@ class SafeFoundationTests(unittest.TestCase):
             "Open now",
             "Closed — opens",
             "always has current hours",
+            "<h3>Current hours</h3>",
         )
         for claim in unsafe_runtime_claims:
             self.assertNotIn(claim, HTML)
         self.assertIn("Regular schedule · holiday hours may differ", HTML)
+
+    def test_takeout_availability_is_not_inferred_from_restaurant_hours(self):
+        self.assertNotIn("Takeout follows the regular restaurant hours", HTML)
+        self.assertIn("Call the restaurant to confirm current takeout availability", HTML)
 
     def test_customer_identity_and_internal_boundaries_are_preserved(self):
         self.assertIn("<h1>Dear Saigon</h1>", HTML)
@@ -117,12 +123,23 @@ class SafeFoundationTests(unittest.TestCase):
     def test_accessibility_baseline(self):
         self.assertIn('class="skip-link" href="#main-content"', HTML)
         self.assertIn('<main id="main-content" tabindex="-1">', HTML)
+        self.assertIn("main, section[id] { scroll-margin-top: 5.5rem; }", HTML)
+        self.assertIn('class="info-phone-link" href="tel:+19056338388"', HTML)
+        self.assertIn(".info-phone-link { display: inline-flex; align-items: center; min-height: 44px;", HTML)
 
     def test_referenced_local_images_exist(self):
         for source in re.findall(r'<img[^>]+src="([^"]+)"', HTML):
             if source.startswith(("http://", "https://", "data:")):
                 continue
             self.assertTrue((ROOT / source).is_file(), f"missing image: {source}")
+
+    def test_below_fold_menu_images_are_lazy_and_dimensioned(self):
+        menu_images = re.findall(r'<img[^>]+src="assets/(?:pho-rare-beef|dearsaigon-pho)\.webp"[^>]*>', HTML)
+        self.assertEqual(len(menu_images), 2)
+        for tag in menu_images:
+            self.assertIn('loading="lazy"', tag)
+            self.assertIn('width="1200"', tag)
+            self.assertIn('height="900"', tag)
 
     def test_only_scoped_menu_names_remain(self):
         self.assertIn("Pho with Rare Beef", HTML)
@@ -144,6 +161,16 @@ class SafeFoundationTests(unittest.TestCase):
         self.assertIn(".reveal, .reveal.in { opacity: 1; transform: none; }", HTML)
         self.assertIn(".hero-copy > * { opacity: 1; animation: none; }", HTML)
         self.assertIn(".hero-media { opacity: 1; animation: none; }", HTML)
+
+    def test_review_build_is_noindex_and_fail_closed_by_policy(self):
+        self.assertIn('<meta name="robots" content="noindex,nofollow"', HTML)
+        self.assertIn("connect-src 'none'", HTML)
+        self.assertIn("form-action 'none'", HTML)
+
+    def test_watchdog_does_not_mislabel_google_listing_links_as_orders(self):
+        self.assertNotIn("Order buttons still point to the Google listing", WATCHDOG)
+        self.assertNotIn("30% apps", WATCHDOG)
+        self.assertIn("Visit-only safety wording present", WATCHDOG)
 
 
 if __name__ == "__main__":

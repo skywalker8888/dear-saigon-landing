@@ -1,0 +1,23 @@
+name: Pull request safety checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the exact review commit
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Run fail-closed content and policy tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Reject whitespace errors in the pull-request diff
+        run: git diff --check "origin/${{ github.base_ref }}...HEAD"

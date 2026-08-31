@@ -1,6 +1,6 @@
-name: Dear Saigon Watchdog
+name: Dear Saigon Visit-only Watchdog
 # Runs daily on GitHub's servers (free, public repo) — no need for your computer to be on.
-# Checks: website up? · custom domain live yet? · still using the interim Google order link?
+# Checks: website up? · custom-domain DNS observation · visit-only safety wording intact?
 # Opens/updates a GitHub Issue when something needs your attention.
 
 on:
@@ -34,19 +34,31 @@ jobs:
             note "🔴 Website DOWN or broken (HTTP $code)"; alerts="${alerts}- 🔴 Website is down or not rendering (HTTP $code).\n"
           fi
 
-          # 2) Custom domain live yet?
+          # 2) Observe custom-domain DNS without authorizing a domain change.
           if python3 -c "import socket,sys; socket.gethostbyname('$DOMAIN')" 2>/dev/null; then
-            note "✅ Domain $DOMAIN resolves — time to set it as the GitHub Pages custom domain."
-            alerts="${alerts}- ✅ $DOMAIN now resolves — add it under repo Settings → Pages → Custom domain.\n"
+            note "ℹ️ Domain $DOMAIN resolves. This check does not authorize a Pages or DNS change."
           else
-            note "⏳ $DOMAIN not resolving yet (DNS A-records not added)."
+            note "ℹ️ Domain $DOMAIN does not currently resolve. No action is authorized by this check."
           fi
 
-          # 3) Still using the interim Google order link? (reminder to swap in Clover)
-          if grep -q "maps.google.com/?cid=" /tmp/p.html; then
-            note "⏳ Order buttons still point to the Google listing (30% apps). Swap in the direct Clover link when available."
+          # 3) Keep the public page fail-closed. Google listing links are allowed
+          # and must not be misclassified as order buttons.
+          if grep -Eqi "Order Online|Checkout|Pay Now|ready in ~20 min|no app fees" /tmp/p.html; then
+            note "🔴 Transactional or unsupported wording detected."
+            alerts="${alerts}- 🔴 Visit-only safety wording is missing or a transactional claim is present.\n"
+          elif grep -q "Online ordering is not enabled on this page." /tmp/p.html; then
+            note "✅ Visit-only safety wording present."
           else
-            note "✅ Order buttons no longer use the Google interim link."
+            note "🔴 Visit-only safety statement is missing."
+            alerts="${alerts}- 🔴 Visit-only safety statement is missing.\n"
+          fi
+
+          # 4) Block known third-party instrumentation from silently returning.
+          if grep -Eqi "posthog|google-analytics|assets.emergent.sh|session.?record" /tmp/p.html; then
+            note "🔴 Third-party analytics or preview instrumentation detected."
+            alerts="${alerts}- 🔴 Third-party analytics or preview instrumentation detected.\n"
+          else
+            note "✅ No blocked analytics or preview instrumentation detected."
           fi
 
           # Raise an issue only when there's something actionable
