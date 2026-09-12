@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>24/7 AI Phone Ordering & Reservations — Dear Saigon Burlington</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231a1a1a'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='17' font-weight='bold' fill='%23ec4c24' text-anchor='middle'%3EDS%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#1a1a1a" />
+<meta name="robots" content="index,follow" />
+<meta name="description" content="Dear Saigon Burlington now answers every call — 24/7. Take pickup orders, reservations, hours & directions with an always-on AI phone assistant. Never miss a hungry guest again." />
+<link rel="canonical" href="https://skywalker8888.github.io/dear-saigon-landing/phone-ai.html" />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="Dear Saigon — Vietnamese Noodle Bar" />
+<meta property="og:title" content="24/7 AI Phone Ordering & Reservations — Dear Saigon Burlington" />
+<meta property="og:description" content="Every call answered, every table booked, every order taken — even when the kitchen is slammed." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://skywalker8888.github.io/dear-saigon-landing/phone-ai.html" />
+<meta property="og:image" content="https://skywalker8888.github.io/dear-saigon-landing/assets/dearsaigon-pho.webp" />
+<meta property="og:locale" content="en_CA" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="24/7 AI Phone Ordering & Reservations — Dear Saigon Burlington" />
+<meta name="twitter:description" content="Every call answered, every table booked, every order taken." />
+<meta name="twitter:image" content="https://skywalker8888.github.io/dear-saigon-landing/assets/dearsaigon-pho.webp" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ink:        #1a1a1a;
+    --ink-2:      #2a2a2a;
+    --accent:     #ec4c24;
+    --accent-2:   #d9401b;
+    --accent-tint:#fdece6;
+    --paper:      #ffffff;
+    --paper-2:    #faf9f7;
+    --paper-3:    #f4f2ee;
+    --muted:      #5b5b5b;
+    --line:       rgba(26,26,26,.10);
+    --shadow-sm:  0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.05);
+    --shadow-md:  0 8px 30px rgba(0,0,0,.08);
+    --shadow-lg:  0 30px 80px rgba(0,0,0,.18);
+    --radius:     14px;
+    --radius-pill:999px;
+    --maxw:       1200px;
+    --ease:       cubic-bezier(.22,.61,.36,1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 90px; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, .serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -.01em;
+    color: var(--ink);
+  }
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; height: auto; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(1.1rem, 4vw, 2.25rem); }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: .01em;
+    padding: .95rem 1.55rem;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: transform .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease), color .2s var(--ease);
+    min-height: 48px;
+    line-height: 1.1;
+  }
+  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(236,76,36,.28);
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--accent-2); box-shadow: 0 14px 32px rgba(236,76,36,.38); }
+  .btn-dark {
+    background: var(--ink);
+    color: #fff;
+  }
+  .btn-dark:hover { transform: translateY(-2px); background: #000; }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border-color: rgba(26,26,26,.18);
+  }
+  .btn-outline:hover { border-color: var(--ink); background: rgba(26,26,26,.04); }
+  .btn-lg { font-size: 1.05rem; padding: 1.05rem 1.9rem; min-height: 54px; }
+
+  /* ---------- Top nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(255,255,255,.9);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-block: .85rem;
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: .65rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .brand .mark {
+    width: 34px; height: 34px; border-radius: 9px;
+    background: var(--ink);
+    color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: .95rem;
+    letter-spacing: .02em;
+  }
+  .brand .subline {
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: .78rem;
+    color: var(--muted); letter-spacing: .16em; text-transform: uppercase;
+  }
+  .nav-links {
+    display: none;
+    gap: 1.75rem;
+    align-items: center;
+  }
+  .nav-links a {
+    font-weight: 500; color: var(--ink-2); font-size: .94rem;
+    transition: color .2s var(--ease);
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-actions { display: inline-flex; align-items: center; gap: .55rem; }
+  .nav-actions .btn { padding: .6rem 1.05rem; min-height: 40px; font-size: .92rem; }
+  @media (min-width: 900px) {
+    .nav-links { display: inline-flex; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(236,76,36,.10), transparent 60%),
+      radial-gradient(900px 460px at 5% 10%, rgba(26,26,26,.05), transparent 60%),
+      var(--paper);
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero .ribbon {
+    display: inline-flex; align-items: center; gap: .55rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: .5rem .95rem;
+    border-radius: var(--radius-pill);
+    font-size: .82rem; font-weight: 600; color: var(--ink-2);
+    box-shadow: var(--shadow-sm);
+  }
+  .hero .ribbon .stars { color: #f5a524; letter-spacing: .12em; font-size: .78rem; }
+  .hero h1 {
+    margin: 1.35rem auto .95rem;
+    font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+    line-height: 1.04;
+    max-width: 16ch;
+    font-weight: 800;
+  }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
+  .hero p.lede {
+    max-width: 62ch; margin: 0 auto 1.75rem;
+    color: var(--muted); font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+  }
+  .hero .cta-row {
+    display: inline-flex; flex-wrap: wrap; gap: .65rem; justify-content: center;
+  }
+  .hero .under-cta {
+    margin-top: .95rem; color: var(--muted); font-size: .88rem;
+  }
+
+  /* Phone mockup */
+  .phone-frame {
+    margin: clamp(2rem, 5vw, 3.25rem) auto 0;
+    max-width: 720px;
+    background: var(--ink);
+    border-radius: 28px;
+    padding: 18px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+  }
+  .phone-frame::before {
+    content: '';
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    width: 90px; height: 6px; background: #333; border-radius: 3px;
+  }
+  .phone-screen {
+    background: #fff; border-radius: 16px;
+    padding: 1.25rem 1.25rem 1.15rem;
+    text-align: left;
+  }
+  .call-row {
+    display: flex; align-items: center; gap: .8rem;
+    padding-bottom: .9rem; border-bottom: 1px solid var(--line);
+    margin-bottom: 1rem;
+  }
+  .avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800;
+  }
+  .call-title { font-weight: 700; font-size: .98rem; }
+  .call-sub { color: var(--muted); font-size: .82rem; }
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e; margin-left: auto;
+    box-shadow: 0 0 0 0 rgba(34,197,94,.5);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+    70% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  }
+  .bubbles { display: grid; gap: .55rem; }
+  .bubble {
+    padding: .7rem .9rem; border-radius: 14px;
+    font-size: .92rem; max-width: 82%;
+    line-height: 1.35;
+  }
+  .bubble.them {
+    background: var(--paper-3); color: var(--ink);
+    border-top-left-radius: 4px;
+    justify-self: start;
+  }
+  .bubble.ai {
+    background: var(--ink); color: #fff;
+    border-top-right-radius: 4px;
+    justify-self: end;
+  }
+  .bubble .who {
+    display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .12em;
+    opacity: .65; margin-bottom: .2rem; font-weight: 700;
+  }
+
+  /* ---------- Logos / trusted band ---------- */
+  .trust {
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+  .trust .kicker {
+    text-transform: uppercase; letter-spacing: .22em; font-size: .74rem;
+    color: var(--muted); font-weight: 700; margin-bottom: 1rem;
+  }
+  .trust-row {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    gap: 1.4rem 2.4rem; opacity: .7;
+    font-weight: 700; color: var(--ink-2); font-size: .95rem;
+  }
+  .trust-row .pill {
+    padding: .35rem .8rem; border: 1px dashed var(--line); border-radius: 999px;
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600;
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  .section-kicker {
+    color: var(--accent); font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; font-size: .78rem;
+    margin-bottom: .8rem;
+  }
+  .section-title {
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    line-height: 1.1; max-width: 22ch;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  .section-lede {
+    color: var(--muted); font-size: 1.05rem;
+    max-width: 60ch;
+  }
+  .section-head {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+  @media (min-width: 900px) {
+    .section-head.split {
+      grid-template-columns: 1.15fr .85fr;
+      align-items: end;
+      gap: 3rem;
+    }
+    .section-head.split .section-lede { justify-self: end; }
+  }
+
+  /* ---------- Feature grid ---------- */
+  .features {
+    background: var(--paper-2);
+  }
+  .feat-grid {
+    display: grid; gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 700px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1000px) { .feat-grid { grid-template-columns: repeat(3, 1fr); } }
+  .feat {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.4rem 1.5rem;
+    transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+  }
+  .feat:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(236,76,36,.35); }
+  .feat .icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--accent-tint); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .feat h3 { font-size: 1.2rem; margin-bottom: .45rem; font-weight: 700; }
+  .feat p { color: var(--muted); font-size: .96rem; }
+
+  /* ---------- How it works ---------- */
+  .how-grid {
+    display: grid; gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 800px) { .how-grid { grid-template-columns: repeat(3, 1fr); } }
+  .step {
+    padding: 1.6rem 1.4rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    position: relative;
+  }
+  .step .num {
+    position: absolute; top: -14px; left: 20px;
+    background: var(--ink); color: var(--accent);
+    padding: .3rem .7rem; border-radius: 999px;
+    font-weight: 800; font-size: .82rem; letter-spacing: .06em;
+  }
+  .step h3 { font-size: 1.15rem; margin: .25rem 0 .4rem; }
+  .step p { color: var(--muted); }
+
+  /* ---------- Split / conversation section ---------- */
+  .split-section {
+    background: var(--ink); color: #fff;
+  }
+  .split-section .section-title,
+  .split-section h3 { color: #fff; }
+  .split-section .section-lede { color: rgba(255,255,255,.72); }
+  .split-section .section-kicker { color: var(--accent); }
+  .split-grid {
+    display: grid; gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 900px) { .split-grid { grid-template-columns: 1fr 1fr; align-items: center; } }
+  .use-list { display: grid; gap: .85rem; margin-top: 1.25rem; }
+  .use-list li {
+    list-style: none;
+    display: flex; gap: .8rem; align-items: flex-start;
+    padding: .95rem 1rem;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+  }
+  .use-list li .tick {
+    flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: .8rem; font-weight: 800;
+  }
+  .use-list li strong { color: #fff; }
+  .use-list li span { color: rgba(255,255,255,.72); font-size: .94rem; }
+
+  .transcript {
+    background: #0f0f0f;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+  .transcript-head {
+    display: flex; align-items: center; gap: .7rem;
+    padding-bottom: .9rem; border-bottom: 1px solid rgba(255,255,255,.08);
+    margin-bottom: 1rem;
+  }
+  .transcript-head .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .transcript-head .label { font-weight: 700; font-size: .95rem; }
+  .transcript-head .time { color: rgba(255,255,255,.55); font-size: .85rem; margin-left: auto; }
+  .msg { display: grid; gap: .35rem; margin-bottom: .9rem; }
+  .msg .from {
+    font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(255,255,255,.55); font-weight: 700;
+  }
+  .msg p { line-height: 1.5; font-size: .96rem; }
+  .msg.caller p { color: rgba(255,255,255,.9); }
+  .msg.ai p { color: #fff; }
+  .msg.ai .from { color: var(--accent); }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { display: grid; gap: .75rem; margin-top: 1.5rem; }
+  details.faq {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1rem 1.15rem;
+    transition: border-color .2s var(--ease);
+  }
+  details.faq[open] { border-color: rgba(236,76,36,.4); }
+  details.faq summary {
+    list-style: none; cursor: pointer;
+    font-weight: 700; font-size: 1.02rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem;
+  }
+  details.faq summary::-webkit-details-marker { display: none; }
+  details.faq summary::after {
+    content: '+'; font-weight: 400; font-size: 1.6rem;
+    color: var(--accent); line-height: 1; transition: transform .2s var(--ease);
+  }
+  details.faq[open] summary::after { content: '−'; }
+  details.faq p { color: var(--muted); margin-top: .7rem; font-size: .98rem; }
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner {
+    background:
+      radial-gradient(600px 260px at 10% 20%, rgba(236,76,36,.28), transparent 60%),
+      radial-gradient(600px 260px at 90% 80%, rgba(236,76,36,.16), transparent 60%),
+      var(--ink);
+    color: #fff;
+    text-align: center;
+    border-radius: 22px;
+    padding: clamp(2.25rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 3rem);
+    margin: 0 auto;
+  }
+  .cta-banner h2 { color: #fff; font-size: clamp(1.9rem, 3.6vw, 2.7rem); margin-bottom: .8rem; }
+  .cta-banner p { color: rgba(255,255,255,.75); max-width: 55ch; margin: 0 auto 1.4rem; }
+  .cta-banner .btn-outline { color: #fff; border-color: rgba(255,255,255,.28); }
+  .cta-banner .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+
+  /* ---------- Info / visit panel ---------- */
+  .visit {
+    background: var(--paper-2);
+  }
+  .visit-grid {
+    display: grid; gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 800px) { .visit-grid { grid-template-columns: repeat(3, 1fr); } }
+  .info-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.3rem;
+  }
+  .info-card h4 {
+    font-family: 'Inter', sans-serif; text-transform: uppercase;
+    letter-spacing: .16em; font-size: .78rem; color: var(--muted);
+    font-weight: 700; margin-bottom: .5rem;
+  }
+  .info-card .big {
+    font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
+    line-height: 1.3;
+  }
+  .info-card .big a { border-bottom: 2px solid var(--accent); }
+  .info-card ul { list-style: none; margin-top: .2rem; }
+  .info-card li {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding: .35rem 0;
+    color: var(--ink);
+    font-size: .96rem;
+  }
+  .info-card li.closed { color: var(--muted); }
+  .info-card li span:last-child { font-weight: 600; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,.75);
+    padding: 3rem 0 2.25rem;
+  }
+  .foot-inner {
+    display: grid; gap: 1.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  @media (min-width: 800px) { .foot-inner { grid-template-columns: 1.2fr 1fr 1fr; } }
+  .foot-brand { font-family: 'Playfair Display', serif; color: #fff; font-weight: 800; font-size: 1.35rem; }
+  .foot-sub { color: rgba(255,255,255,.55); margin-top: .35rem; font-size: .92rem; }
+  .foot h5 {
+    font-family: 'Inter', sans-serif; color: #fff; font-size: .82rem;
+    text-transform: uppercase; letter-spacing: .18em; font-weight: 700; margin-bottom: .7rem;
+  }
+  .foot a { display: block; padding: .25rem 0; color: rgba(255,255,255,.72); }
+  .foot a:hover { color: var(--accent); }
+  .foot-bottom {
+    margin-top: 2rem; padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,.08);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem;
+    color: rgba(255,255,255,.55); font-size: .88rem;
+  }
+
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    .live-dot { animation: none; }
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Dear Saigon home">
+        <span class="mark" aria-hidden="true">DS</span>
+        <span>
+          Dear Saigon
+          <span class="subline" style="display:block;margin-top:2px">Burlington</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html#menu">Menu</a>
+        <a href="index.html#story">Our story</a>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="tel:+19056338388" aria-label="Call Dear Saigon">Call now</a>
+        <a class="btn btn-primary" href="#cta">Try the AI</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="ribbon">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>Always-on phone assistant for Dear Saigon Burlington</span>
+        </span>
+
+        <h1>24/7 AI phone <span class="accent">ordering &amp; reservations</span>.</h1>
+        <p class="lede">
+          Every hungry caller answered — even mid-rush, after close, or on Mondays when the shop is dark.
+          Our AI takes pickup orders, books tables, quotes wait times, and rattles off hours,
+          directions and daily specials without ever putting anyone on hold.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="tel:+19056338388">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+            Call (905) 633-8388
+          </a>
+          <a class="btn btn-outline btn-lg" href="#how">See how it works</a>
+        </div>
+        <p class="under-cta">No hold music &middot; No missed calls &middot; No app to install</p>
+
+        <!-- Phone / demo card -->
+        <div class="phone-frame reveal" aria-hidden="false">
+          <div class="phone-screen">
+            <div class="call-row">
+              <div class="avatar">DS</div>
+              <div>
+                <div class="call-title">Incoming call — Dear Saigon</div>
+                <div class="call-sub">Tuesday 9:42 pm &middot; after hours</div>
+              </div>
+              <span class="live-dot" aria-hidden="true"></span>
+            </div>
+            <div class="bubbles">
+              <div class="bubble them">
+                <span class="who">Caller</span>
+                Hi, do you have a table for 4 on Saturday around 7?
+              </div>
+              <div class="bubble ai">
+                <span class="who">Dear Saigon AI</span>
+                Absolutely — Saturday at 7 pm for 4 works. Whose name should I put it under?
+              </div>
+              <div class="bubble them">
+                <span class="who">Caller</span>
+                Nguyen. And can we add a pickup order for two pho and spring rolls?
+              </div>
+              <div class="bubble ai">
+                <span class="who">Dear Saigon AI</span>
+                Done — table booked, and your pickup will be ready ~20 min after you order. I'll text a confirmation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust">
+          <div class="kicker">Answers questions like</div>
+          <div class="trust-row">
+            <span class="pill">"Are you open right now?"</span>
+            <span class="pill">"Do you deliver?"</span>
+            <span class="pill">"Can I book for 6?"</span>
+            <span class="pill">"How spicy is the pho?"</span>
+            <span class="pill">"Where are you exactly?"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="features" id="features">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <div class="section-kicker">What it does</div>
+            <h2 class="section-title">Built for a busy Vietnamese kitchen — not a call centre.</h2>
+          </div>
+          <p class="section-lede">
+            It knows the menu, the pickup times, the address on Fairview, and exactly which days
+            we're closed. Your team stays on the line — cooking pho.
+          </p>
+        </div>
+
+        <div class="feat-grid">
+          <div class="feat reveal">
+            <span class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <h3>24/7 pickup orders</h3>
+            <p>Callers place orders any hour — the AI reads back the total and quotes a realistic ~20 minute pickup window.</p>
+          </div>
+
+          <div class="feat reveal">
+            <span class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </span>
+            <h3>Reservations, on the spot</h3>
+            <p>Books tables for 1–8 guests, checks the calendar, and confirms by text so nothing gets lost on a sticky notepad.</p>
+          </div>
+
+          <div class="feat reveal">
+            <span class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h3>Hours &amp; directions</h3>
+            <p>Rattles off Thu–Sun 11 am–8 pm, warns about Mon–Wed closed, and texts a Google Maps link to 2405 Fairview St.</p>
+          </div>
+
+          <div class="feat reveal">
+            <span class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.2Z"/><path d="M8 9h8M8 12h5"/></svg>
+            </span>
+            <h3>Menu smart</h3>
+            <p>Knows the pho lineup, grilled plates, spring rolls, allergy notes and the specials — no scripted robot answers.</p>
+          </div>
+
+          <div class="feat reveal">
+            <span class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+            </span>
+            <h3>Every call transcribed</h3>
+            <p>Full transcript, caller number and outcome pushed to email or SMS the moment the call ends. Zero mystery.</p>
+          </div>
+
+          <div class="feat reveal">
+            <span class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 4-9 4-9-4 9-4Z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+            </span>
+            <h3>Handoff to a human</h3>
+            <p>Catering, private events or "please just get me the owner" — the AI knows when to transfer and to whom.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <div class="section-kicker">How it works</div>
+            <h2 class="section-title">Three steps. Your phone stops ringing off the hook.</h2>
+          </div>
+          <p class="section-lede">
+            The AI answers on the first ring, in a voice that sounds like Dear Saigon —
+            warm, quick, and never rushed off a call.
+          </p>
+        </div>
+
+        <div class="how-grid">
+          <article class="step reveal">
+            <span class="num">Step 01</span>
+            <h3>Caller dials the restaurant</h3>
+            <p>(905) 633-8388 rings as usual. If nobody grabs it in 3 rings — or you're closed — the AI picks up instead of voicemail.</p>
+          </article>
+          <article class="step reveal">
+            <span class="num">Step 02</span>
+            <h3>AI takes care of it</h3>
+            <p>Orders, reservations, hours, directions, allergy questions, gift-card lookups — all handled by voice, no menus to press.</p>
+          </article>
+          <article class="step reveal">
+            <span class="num">Step 03</span>
+            <h3>You get a clean handoff</h3>
+            <p>Order tickets print to the kitchen. Bookings drop into the reservation sheet. A short summary lands in your inbox.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPLIT / USE CASES + TRANSCRIPT ============ -->
+    <section class="split-section">
+      <div class="wrap">
+        <div class="split-grid">
+          <div>
+            <div class="section-kicker">Real Burlington calls</div>
+            <h2 class="section-title">The stuff Dear Saigon actually gets asked at 9:47 pm.</h2>
+            <p class="section-lede">
+              This is the difference between a missed call and a happy regular walking through the door on Fairview Saturday night.
+            </p>
+
+            <ul class="use-list">
+              <li><span class="tick">✓</span><div><strong>Late-night pickup orders</strong><br /><span>"Are you still taking pho to-go?" — order captured, kitchen notified before close.</span></div></li>
+              <li><span class="tick">✓</span><div><strong>Group reservations</strong><br /><span>"Table for 6 tomorrow at 6?" — booked, confirmed by text, name on the sheet.</span></div></li>
+              <li><span class="tick">✓</span><div><strong>Closed-day callers</strong><br /><span>Mon–Wed the doors are dark. The AI still greets, gives hours, and offers to book Thursday.</span></div></li>
+              <li><span class="tick">✓</span><div><strong>"How spicy is it?"</strong><br /><span>Answers menu &amp; allergy questions instead of putting people on hold.</span></div></li>
+            </ul>
+          </div>
+
+          <div class="transcript reveal" aria-label="Example call transcript">
+            <div class="transcript-head">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="label">Sample transcript</span>
+              <span class="time">Sun · 8:12 pm</span>
+            </div>
+
+            <div class="msg caller">
+              <span class="from">Caller</span>
+              <p>Hey, are you guys still open? I want to grab two pho and an order of spring rolls.</p>
+            </div>
+            <div class="msg ai">
+              <span class="from">Dear Saigon AI</span>
+              <p>We are — kitchen closes at 8. I can get two pho and one order of deep-fried spring rolls started right now. Rare beef, well-done, or house special on the pho?</p>
+            </div>
+            <div class="msg caller">
+              <span class="from">Caller</span>
+              <p>One house special, one rare beef.</p>
+            </div>
+            <div class="msg ai">
+              <span class="from">Dear Saigon AI</span>
+              <p>Perfect. That's $47.94 in total, ready for pickup at 8:32 pm at 2405 Fairview St. Whose name should I put it under?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISIT / INFO ============ -->
+    <section class="visit" id="visit">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <div class="section-kicker">Find us in Burlington</div>
+            <h2 class="section-title">Same restaurant. Same phone number. Smarter answers.</h2>
+          </div>
+          <p class="section-lede">
+            The AI knows exactly where to send hungry callers — because we told it, once, in plain English.
+          </p>
+        </div>
+
+        <div class="visit-grid">
+          <div class="info-card reveal">
+            <h4>Location</h4>
+            <div class="big">
+              <a href="https://maps.google.com/?q=2405+Fairview+St+Burlington" target="_blank" rel="noopener">
+                2405 Fairview St<br />Burlington, ON
+              </a>
+            </div>
+          </div>
+          <div class="info-card reveal">
+            <h4>Phone</h4>
+            <div class="big"><a href="tel:+19056338388">(905) 633-8388</a></div>
+            <p style="margin-top:.5rem;color:var(--muted);font-size:.92rem">Answered 24/7 by our AI when the team can't get to it.</p>
+          </div>
+          <div class="info-card reveal">
+            <h4>Hours</h4>
+            <ul>
+              <li class="closed"><span>Mon–Wed</span><span>Closed</span></li>
+              <li><span>Thursday</span><span>11 am – 8 pm</span></li>
+              <li><span>Friday</span><span>11 am – 8 pm</span></li>
+              <li><span>Saturday</span><span>11 am – 8 pm</span></li>
+              <li><span>Sunday</span><span>11 am – 8 pm</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head split">
+          <div>
+            <div class="section-kicker">Common questions</div>
+            <h2 class="section-title">Yes, it really is Dear Saigon on the other end.</h2>
+          </div>
+          <p class="section-lede">The AI is trained specifically on our menu, hours and neighbourhood — not a generic hotline.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq" open>
+            <summary>Is this a robot or a real person?</summary>
+            <p>It's a natural-sounding voice AI, built for Dear Saigon. You can talk to it like you'd talk to a host — no menus, no "press 1 for pickup". If you'd rather talk to a human, just ask and it'll transfer during open hours.</p>
+          </details>
+          <details class="faq">
+            <summary>Can I still just place an order the normal way?</summary>
+            <p>Absolutely. Online pickup at Dear Saigon is unchanged and always fee-free — the AI is there for people who want to <em>talk</em> to us.</p>
+          </details>
+          <details class="faq">
+            <summary>What happens if you're closed Mon–Wed?</summary>
+            <p>The AI greets the caller, tells them we're closed Mon–Wed, and offers to book a Thursday–Sunday table or take a to-go order for the next open day.</p>
+          </details>
+          <details class="faq">
+            <summary>Does it know about allergies and spice levels?</summary>
+            <p>Yes — it knows which dishes contain peanuts, shellfish, gluten and dairy, and it knows exactly how spicy the pho and pad thai run. When in doubt it defers to the kitchen.</p>
+          </details>
+          <details class="faq">
+            <summary>Will I get charged extra to call?</summary>
+            <p>Nope. It's the same (905) 633-8388 number, same regular call rates from your carrier. The restaurant just answers faster.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BANNER ============ -->
+    <section id="cta">
+      <div class="wrap">
+        <div class="cta-banner">
+          <h2>Give it a call. It's already on shift.</h2>
+          <p>Ring the restaurant — ask about pho, book a table for Saturday, or just see what happens when a Vietnamese noodle bar has a 24-hour concierge.</p>
+          <div class="cta-row" style="justify-content:center;display:flex;flex-wrap:wrap;gap:.65rem">
+            <a class="btn btn-primary btn-lg" href="tel:+19056338388">Call (905) 633-8388</a>
+            <a class="btn btn-outline btn-lg" href="index.html#menu">Browse the menu</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <div>
+        <div class="foot-brand">Dear Saigon</div>
+        <div class="foot-sub">Vietnamese Noodle Bar &middot; Burlington, ON</div>
+        <p style="margin-top:1rem;max-width:36ch;color:rgba(255,255,255,.6);font-size:.92rem">
+          Fresh pho, grilled plates &amp; hand-rolled classics on Fairview St. Now answering the phone 24/7.
+        </p>
+      </div>
+      <div>
+        <h5>Visit</h5>
+        <a href="https://maps.google.com/?q=2405+Fairview+St+Burlington" target="_blank" rel="noopener">2405 Fairview St, Burlington</a>
+        <a href="tel:+19056338388">(905) 633-8388</a>
+        <a href="index.html">Main site</a>
+      </div>
+      <div>
+        <h5>Hours</h5>
+        <a>Mon–Wed &nbsp;&middot;&nbsp; Closed</a>
+        <a>Thu–Sun &nbsp;&middot;&nbsp; 11 am – 8 pm</a>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© Dear Saigon Burlington</span>
+      <span>Built with a 24/7 AI phone assistant</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(function (e) { e.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
+
+</body>
+</html>
