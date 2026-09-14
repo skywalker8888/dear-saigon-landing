@@ -291,11 +291,9 @@
   @media (min-width: 600px) { .dish-grid { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1000px) {
     .dish-grid {
-      grid-template-columns: 1.4fr 1fr 1fr;
-      grid-template-rows: auto auto;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr;
       gap: 1.15rem;
     }
-    .dish.hero-dish { grid-row: span 2; }
   }
 
   .dish {
@@ -309,7 +307,7 @@
     transition: transform .35s var(--ease), box-shadow .35s var(--ease);
   }
   .dish.hero-dish { aspect-ratio: 4 / 5; }
-  @media (min-width: 1000px) { .dish.hero-dish { aspect-ratio: auto; min-height: 100%; } }
+  @media (min-width: 1000px) { .dish.hero-dish { aspect-ratio: 1 / 1.15; } }
   .dish:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
   .dish img {
     position: absolute; inset: 0; width: 100%; height: 100%;
@@ -756,14 +754,6 @@
             <figcaption class="cap">
               <span class="title">Deep-fried spring rolls</span>
               <span class="desc">Crisp, hand-rolled — the table's favourite starter.</span>
-            </figcaption>
-          </figure>
-
-          <figure class="dish reveal">
-            <img src="assets/chicken-pad-thai.webp" alt="Chicken pad thai with peanuts and lime" loading="lazy" width="900" height="900" />
-            <figcaption class="cap">
-              <span class="title">Chicken pad thai</span>
-              <span class="desc">Rice noodles, egg, peanuts, a squeeze of lime.</span>
             </figcaption>
           </figure>
         </div>
