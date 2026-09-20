@@ -265,9 +265,24 @@
     z-index: 2;
     animation: floatBowl 7s ease-in-out infinite;
   }
+  /* Full-bleed platter photo (real, un-cutout) — fills the disc via cover-crop */
+  .hero-platter {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 2;
+    animation: floatPlatter 9s ease-in-out infinite;
+  }
   @keyframes floatBowl {
     0%,100% { transform: translate(-50%, -50%); }
     50%     { transform: translate(-50%, calc(-50% - 12px)); }
+  }
+  @keyframes floatPlatter {
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.02); }
   }
   .price-badge {
     position: absolute;
@@ -385,6 +400,44 @@
   .dish-price .cur { color: var(--gold); font-size: .9rem; vertical-align: top; margin-right: 1px; }
 
   .menu-cta { text-align: center; margin-top: clamp(2rem, 5vw, 2.8rem); }
+
+  /* ---------- Real-photo gallery ---------- */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(.8rem, 2vw, 1.2rem);
+  }
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--cream-warm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--edge);
+    transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    display: block;
+    transition: transform .6s var(--ease);
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: .9rem;
+    margin-top: 1.1rem;
+    letter-spacing: .02em;
+  }
+  @media (max-width: 900px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr 1fr; gap: .6rem; }
+  }
 
   /* ---------- Location & hours ---------- */
   .info { background: var(--cream-warm); }
@@ -693,11 +746,7 @@
         <div class="hero-media" aria-hidden="false">
           <div class="hero-disc">
             <div class="steam" aria-hidden="true"><span></span><span></span><span></span></div>
-            <img class="hero-bowl" src="assets/hero-pho.webp" alt="A steaming bowl of Vietnamese pho with rare beef, rice noodles and fresh Thai basil" width="1200" height="900" fetchpriority="high" />
-          </div>
-          <div class="price-badge" aria-hidden="true">
-            <span class="lbl">Pho from</span>
-            <span class="amt">$17.99</span>
+            <img class="hero-platter" src="assets/hero-platter.webp" alt="Official Dear Saigon food platter — grilled meats, spring rolls, rice vermicelli and fresh herbs on a woven tray" width="1400" height="933" fetchpriority="high" />
           </div>
         </div>
       </div>
@@ -764,6 +813,34 @@
           <h2>A little Saigon, <em style="font-style:italic">close to home.</em></h2>
           <p>Dear Saigon brings the comfort of Vietnamese home cooking to Fairview Street — warm bowls, bright herbs, and grilled favourites, made fresh and ready for pickup when you are.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ REAL-PHOTO GALLERY ============ -->
+    <section class="sec" id="gallery" style="padding-top: clamp(2.5rem, 6vw, 4rem);">
+      <div class="wrap">
+        <div class="sec-head center reveal">
+          <span class="kicker">From our kitchen</span>
+          <h2>Real plates, real photos.</h2>
+          <p>Straight from our tables — no stock photos, no filters. Just what shows up when you order.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item reveal">
+            <img src="assets/gallery-house-special-pho.webp" alt="Dear Saigon house special pho — steaming bowl with rice noodles, herbs and lime" loading="lazy" width="1200" height="900" />
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/gallery-satay-pho-rare-beef.webp" alt="Satay pho with rare beef — Dear Saigon" loading="lazy" width="1200" height="900" />
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/gallery-dear-saigon-platter.webp" alt="Dear Saigon platter — grilled favourites, spring rolls and vermicelli" loading="lazy" width="1200" height="900" />
+          </figure>
+          <figure class="gallery-item reveal">
+            <img src="assets/gallery-house-special-pho-2.webp" alt="House special pho at Dear Saigon — bowl with fresh herbs and chili" loading="lazy" width="1200" height="900" />
+          </figure>
+        </div>
+
+        <p class="gallery-note reveal">Photos of dishes served at Dear Saigon, Burlington.</p>
       </div>
     </section>
 
