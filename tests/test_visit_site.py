@@ -29,6 +29,14 @@ class VisitOnlySiteTests(unittest.TestCase):
         self.assertIn("Dear Saigon Platter", DATA)
         self.assertIn("id=\"menuApp\"", MENU)
 
+    def test_menu_search_and_vegetarian_filter(self):
+        self.assertIn('id="menuSearch"', MENU)
+        self.assertIn('id="vegFilter"', MENU)
+        self.assertIn('id="menuChips"', MENU)
+        self.assertGreaterEqual(DATA.count('"veg"'), 6)
+        self.assertIn("Tofu Fresh Rolls", DATA)
+        self.assertIn("Tofu Pad Thai", DATA)
+
     def test_no_transactional_checkout(self):
         blob = PAGES.lower()
         for banned in (
