@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Menu — Dear Saigon Burlington</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231C4834'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='17' font-weight='bold' fill='%23F4F1E9' text-anchor='middle'%3EDS%3C/text%3E%3C/svg%3E" />
+<meta name="theme-color" content="#1C4834" />
+<meta name="robots" content="index,follow" />
+<meta name="description" content="Dear Saigon Burlington menu — pho, vermicelli, rice plates, satay, tom yum, drinks. Native web menu. Call (905) 633-8388 to order. Staff confirm availability." />
+<link rel="canonical" href="https://skywalker8888.github.io/dear-saigon-landing/menu.html" />
+<meta property="og:title" content="Menu — Dear Saigon Burlington" />
+<meta property="og:description" content="Browse pho, vermicelli, platters and drinks. Call to order. Staff confirm availability." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://skywalker8888.github.io/dear-saigon-landing/menu.html" />
+<meta property="og:image" content="https://skywalker8888.github.io/dear-saigon-landing/assets/menu/p9-dear-saigon-pho.webp" />
+<meta property="og:locale" content="en_CA" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="index.html" class="brand-lockup" aria-label="Dear Saigon home">
+        <span class="name">DEAR SAIGON</span>
+        <span class="sub">Vietnamese Noodle Bar</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
+        <span></span>
+      </button>
+      <nav class="nav" id="siteNav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="menu.html" aria-current="page">Menu</a>
+        <a href="index.html#visit">Visit</a>
+        <a href="index.html#catering">Catering</a>
+        <a class="btn btn-order nav-cta" href="tel:+19056338388">Call (905) 633-8388</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <span class="kicker" style="color:var(--gold)">Burlington menu</span>
+        <h1>What we cook.</h1>
+        <p>A native web menu — pho, vermicelli, rice plates, satay, drinks. This page does not take payments. Call to order; staff confirm availability and the final total.</p>
+        <div class="hero-status" style="margin-top:1.2rem">
+          <span class="status-pill" data-hours-pill role="status" aria-live="polite">
+            <span class="dot-live" aria-hidden="true"></span><span class="status-text">Checking hours…</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" style="padding-top: clamp(2rem, 5vw, 3rem);">
+      <div class="wrap">
+        <div class="menu-tools">
+          <label class="sr-only" for="menuSearch" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Search the menu</label>
+          <input id="menuSearch" class="menu-search" type="search" placeholder="Search pho, vermicelli, P9…" autocomplete="off" />
+          <button type="button" class="chip" id="vegFilter" aria-pressed="false">Vegetarian</button>
+        </div>
+        <div class="chip-row" id="menuChips" role="toolbar" aria-label="Menu categories">
+          <button type="button" class="chip is-on" data-cat="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-cat="appetizers" aria-pressed="false">Appetizers</button>
+          <button type="button" class="chip" data-cat="pho" aria-pressed="false">Pho</button>
+          <button type="button" class="chip" data-cat="platters" aria-pressed="false">Platters</button>
+          <button type="button" class="chip" data-cat="rice" aria-pressed="false">Rice</button>
+          <button type="button" class="chip" data-cat="vermicelli" aria-pressed="false">Vermicelli</button>
+          <button type="button" class="chip" data-cat="padthai" aria-pressed="false">Pad Thai</button>
+          <button type="button" class="chip" data-cat="satay" aria-pressed="false">Satay</button>
+          <button type="button" class="chip" data-cat="tomyum" aria-pressed="false">Tom Yum</button>
+          <button type="button" class="chip" data-cat="drinks" aria-pressed="false">Drinks</button>
+          <button type="button" class="chip" data-cat="dessert" aria-pressed="false">Dessert</button>
+        </div>
+
+        <div id="menuApp"></div>
+
+        <p class="gallery-note">Names from the Burlington in-house menu. Photos are mapped where we have a confirmed dish still. Ask staff about allergens — this page is not a full ingredient list.</p>
+        <div class="menu-cta">
+          <a class="btn btn-outline" href="dear-saigon-menu.pdf" target="_blank" rel="noopener">Printable menu (PDF) <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-order btn-order-lg" href="tel:+19056338388">Call to order · (905) 633-8388</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div>
+        <div class="brand-lockup">
+          <span class="name">DEAR SAIGON</span>
+          <span class="sub">Vietnamese Noodle Bar</span>
+        </div>
+        <p class="tag">2405 Fairview St, Unit 3, Burlington · Closed Mondays.</p>
+      </div>
+      <div class="footer-right">
+        <a class="btn btn-order btn-order-lg" href="tel:+19056338388">Call (905) 633-8388</a>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <span>© Dear Saigon · Burlington, ON</span>
+      <a href="index.html#visit">Hours &amp; directions</a>
+    </div>
+  </footer>
+
+  <nav class="mobile-bar" aria-label="Quick visit actions">
+    <a class="btn btn-order" href="tel:+19056338388">Call</a>
+    <a class="btn btn-ghost" href="index.html#visit">Visit</a>
+    <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Dear+Saigon+Vietnamese+Noodle+Bar%2C+2405+Fairview+St+Unit+3%2C+Burlington%2C+ON+L7R+2E4" target="_blank" rel="noopener">Directions</a>
+  </nav>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>

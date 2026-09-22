@@ -42,11 +42,17 @@ jobs:
             note "⏳ $DOMAIN not resolving yet (DNS A-records not added)."
           fi
 
-          # 3) Still using the interim Google order link? (reminder to swap in Clover)
-          if grep -q "maps.google.com/?cid=" /tmp/p.html; then
-            note "⏳ Order buttons still point to the Google listing (30% apps). Swap in the direct Clover link when available."
+          # 3) Visit-only: flag accidental checkout / third-party order links.
+          if grep -Eiq 'stripe|clover\.com|doordash|ubereats|skipthedishes|order online' /tmp/p.html; then
+            note "🔴 Transactional order language or third-party order link detected on a visit-only page."
+            alerts="${alerts}- 🔴 Visit-only page contains checkout/order language. Confirm before publishing.\n"
           else
-            note "✅ Order buttons no longer use the Google interim link."
+            note "✅ No checkout / third-party order links detected (visit-only)."
+          fi
+          if grep -q "menu.html" /tmp/p.html; then
+            note "✅ Native menu link present."
+          else
+            note "⏳ Homepage does not link to menu.html."
           fi
 
           # Raise an issue only when there's something actionable
