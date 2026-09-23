@@ -74,6 +74,25 @@ class VisitOnlySiteTests(unittest.TestCase):
         self.assertIn(":focus-visible", css)
         self.assertIn("prefers-reduced-motion", css)
 
+    def test_menu_renderer_avoids_innerhtml(self):
+        menu_js = (ROOT / "js" / "menu.js").read_text(encoding="utf-8")
+        self.assertNotIn("innerHTML", menu_js)
+        self.assertIn("replaceChildren", menu_js)
+        self.assertIn("createElement", menu_js)
+
+    def test_watchdog_scans_menu_and_generic_checkout(self):
+        watchdog = (ROOT / ".github" / "workflows" / "watchdog.yml").read_text(encoding="utf-8")
+        self.assertIn("menu.html", watchdog)
+        self.assertIn("checkout", watchdog)
+        self.assertIn("add to cart", watchdog)
+
+    def test_nav_toggle_updates_accessible_name(self):
+        site_js = (ROOT / "js" / "site.js").read_text(encoding="utf-8")
+        self.assertIn("Close menu", site_js)
+        css = (ROOT / "css" / "site.css").read_text(encoding="utf-8")
+        self.assertIn("safe-area-inset-bottom", css)
+        self.assertIn("calc(84px", css)
+
 
 if __name__ == "__main__":
     unittest.main()
