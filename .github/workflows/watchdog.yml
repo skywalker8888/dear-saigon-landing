@@ -43,7 +43,12 @@ jobs:
           fi
 
           # 3) Visit-only: flag accidental checkout / third-party order links.
-          if grep -Eiq 'stripe|clover\.com|doordash|ubereats|skipthedishes|order online' /tmp/p.html; then
+          menu_code=$(curl -s -o /tmp/menu.html -w "%{http_code}" -L "${SITE}menu.html" || echo 000)
+          if [ "$menu_code" != "200" ]; then
+            note "🔴 menu.html not reachable (HTTP $menu_code)"
+            alerts="${alerts}- 🔴 Native menu page is down or missing (HTTP $menu_code).\n"
+          fi
+          if grep -Eiq 'stripe|clover\.com|doordash|ubereats|skipthedishes|order online|checkout|add to cart' /tmp/p.html /tmp/menu.html; then
             note "🔴 Transactional order language or third-party order link detected on a visit-only page."
             alerts="${alerts}- 🔴 Visit-only page contains checkout/order language. Confirm before publishing.\n"
           else
@@ -52,7 +57,8 @@ jobs:
           if grep -q "menu.html" /tmp/p.html; then
             note "✅ Native menu link present."
           else
-            note "⏳ Homepage does not link to menu.html."
+            note "🔴 Homepage does not link to menu.html."
+            alerts="${alerts}- 🔴 Homepage does not link to menu.html.\n"
           fi
 
           # Raise an issue only when there's something actionable

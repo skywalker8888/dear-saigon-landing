@@ -95,8 +95,15 @@
   var bar = document.querySelector(".topbar");
   var btn = document.querySelector(".nav-toggle");
   if (!bar || !btn) return;
-  btn.addEventListener("click", function () {
-    var open = bar.classList.toggle("is-open");
+  function setOpen(open) {
+    bar.classList.toggle("is-open", open);
     btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  btn.addEventListener("click", function () {
+    setOpen(!bar.classList.contains("is-open"));
+  });
+  bar.querySelectorAll(".nav a").forEach(function (link) {
+    link.addEventListener("click", function () { setOpen(false); });
   });
 })();
